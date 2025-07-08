@@ -1,0 +1,176 @@
+/* Facilities Page Specific Styles */
+
+/* Main section for the Facilities page, taking full breadth */
+.facility-section {
+    width: 100%;
+    padding: 60px 0; /* Vertical padding for the section */
+    background-color: #f8f9fa; /* Light background for the section */
+    box-shadow: 0 2px 15px rgba(0,0,0,0.05); /* Subtle shadow for depth */
+    margin-bottom: 0; /* Ensures no extra margin below the section */
+}
+
+/* Container for the grid of facility items */
+.facility-grid {
+    display: grid; /* Use CSS Grid for robust responsive layout */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Responsive columns, min width 300px */
+    gap: 30px; /* Space between grid items */
+    justify-content: center; /* Centers the entire grid horizontally if there's extra space */
+    align-items: stretch; /* Ensures all grid items stretch to the same height */
+    justify-items: center; /* Centers individual grid items within their cells */
+    padding-top: 20px; /* Space below the main heading */
+}
+
+/* Styles for an individual facility item (card-like appearance) */
+.facility-item {
+    background-color: #ffffff; /* White background for the card */
+    border-radius: 10px; /* Rounded corners for the card */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Soft shadow */
+    overflow: hidden; /* Ensures content respects border-radius and clips pseudo-elements */
+    display: flex; /* Makes it a flex container */
+    flex-direction: column; /* Stacks image and info vertically */
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out; /* Smooth hover effect */
+    height: 100%; /* Important for align-items: stretch to work */
+    /* Removed cursor: pointer; as it's no longer clickable for modal */
+    position: relative; /* Needed for ::before and ::after pseudo-elements */
+}
+
+.facility-item:hover {
+    transform: translateY(-8px); /* Lifts the card on hover */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
+}
+
+/* Overlay effect on hover (::before) */
+.facility-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 220px; /* Match image height */
+    background-color: rgba(10, 145, 218, 0.2); /* Light blue overlay */
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+    z-index: 1; /* Above image, below shine */
+}
+
+.facility-item:hover::before {
+    opacity: 1;
+}
+
+/* Lightning/Shine effect on hover (::after) */
+.facility-item::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%; /* Start off-screen to the left */
+    width: 50%; /* Width of the shine */
+    height: 220px; /* Match image height */
+    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0) 100%);
+    transform: skewX(-20deg); /* Angle the shine */
+    transition: left 0.6s ease-out; /* Smooth movement across the image */
+    z-index: 2; /* Above the overlay */
+    pointer-events: none; /* Allows clicks to pass through to the image */
+}
+
+.facility-item:hover::after {
+    left: 100%; /* Move across to the right */
+}
+
+
+/* Styles for the image within each facility item */
+.facility-image {
+    width: 100%;
+    height: 220px; /* Fixed height for consistent image size */
+    object-fit: cover; /* Ensures images cover the area without distortion */
+    display: block; /* Removes extra space below image */
+    border-bottom: 1px solid #eee; /* Subtle separator from title */
+    transition: transform 0.3s ease; /* Smooth zoom effect on image */
+    position: relative; /* Important for stacking context with pseudo-elements */
+    z-index: 0; /* Ensures image is below pseudo-elements */
+}
+
+.facility-item:hover .facility-image {
+    transform: scale(1.05); /* Slightly zooms the image on card hover */
+}
+
+/* Styles for the information section (title and caption) below the image */
+.facility-info {
+    padding: 20px; /* Padding inside the info section */
+    text-align: center; /* Centers the title and caption text */
+    flex-grow: 1; /* Allows this section to grow and take available space */
+    display: flex; /* Makes it a flex container for centering content */
+    flex-direction: column;
+    justify-content: center; /* Vertically centers the title if extra space */
+    align-items: center; /* Horizontally centers the title and caption */
+    position: relative; /* Keep info layer on top if needed */
+    z-index: 3; /* Ensure text is above any image effects */
+}
+
+/* Styles for the title of each facility item (already bold) */
+.facility-title {
+    font-family: 'Trirong', sans-serif;
+    font-size: 1.25em; /* Font size for the title */
+    color: #022335; /* Dark blue color */
+    margin-bottom: 5px; /* Added margin for space above caption */
+    line-height: 1.4; /* Improves readability for titles */
+    font-weight: bold; /* Ensures title is bold */
+}
+
+/* Styles for the image caption */
+.image-caption {
+    font-size: 0.9em; /* Adjusted font size for caption */
+    color: #555; /* Text color */
+    text-align: center; /* Center the caption text */
+    line-height: 1.4; /* Adjust line height for captions */
+    margin-bottom: 0; /* Remove default margin */
+}
+
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 991px) { /* Tablets and smaller desktops */
+    .facility-section {
+        padding: 40px 0; /* Reduce vertical padding */
+    }
+    .facility-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Adjust min-width for tablets */
+        gap: 25px;
+    }
+    .facility-image {
+        height: 180px; /* Adjust image height for tablets */
+    }
+    .facility-title {
+        font-size: 1.15em;
+    }
+    .image-caption {
+        font-size: 1em; /* Further reduction for tablets */
+    }
+    /* Adjust pseudo-elements height for responsive images */
+    .facility-item::before,
+    .facility-item::after {
+        height: 180px; /* Match responsive image height */
+    }
+}
+
+@media (max-width: 767px) { /* Mobile specific adjustments */
+    .facility-section {
+        padding: 30px 0; /* Further reduce vertical padding */
+    }
+    .facility-grid {
+        grid-template-columns: 1fr; /* Single column layout for mobile */
+        gap: 20px;
+    }
+    .facility-image {
+        height: 200px; /* Taller image for single column on mobile */
+    }
+    .facility-title {
+        font-size: 1.1em;
+    }
+    .image-caption {
+        font-size: 0.8em; /* Smallest caption font on mobile */
+    }
+    /* Adjust pseudo-elements height for responsive images */
+    .facility-item::before,
+    .facility-item::after {
+        height: 200px; /* Match responsive image height */
+    }
+}
