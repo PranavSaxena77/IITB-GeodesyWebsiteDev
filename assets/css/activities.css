@@ -1,5 +1,32 @@
 /* Activities Page Specific Styles */
-
+.centered-year-heading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 1.6rem;
+    font-weight: 600;
+    font-family: 'Trirong', serif;
+    color: #1f3e81;
+    margin: 2.5rem auto 1.5rem auto;
+    text-align: center;
+    border-bottom: 2px solid #1f44ca;
+    width: fit-content;
+    padding-bottom: 6px;
+    letter-spacing: 1px;
+  }
+  
+  .centered-year-heading i {
+    font-size: 1.7rem;
+    color: #ff6b00;
+    transition: transform 0.3s ease;
+  }
+  
+  .centered-year-heading:hover i {
+    transform: scale(1.2);
+  }
+  
+  
 /* Main flex container for the two large sections (R&D and Outreach) */
 .activities-main-flex-container {
     display: flex; /* Enable flexbox for side-by-side layout */

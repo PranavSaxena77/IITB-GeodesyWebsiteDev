@@ -1,66 +1,57 @@
 /* About Us Page Specific Styles */
-/* New wrapper for all content on the About page to apply unified background */
+
 .about-page-content-wrapper {
-    /* Removed background-color and box-shadow here as the body will handle the full page background */
-    padding: 60px 20px; /* Consistent padding around the entire content */
-    margin-top: 0; /* Ensures it sits right below the header */
-    margin-bottom: 0; /* Ensures no extra space before footer */
-    
+    padding: 60px 20px;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
-/* Styles for the main descriptive text within the About Us section */
 .about-content-text {
-    margin-bottom: 40px; /* Space after this block */
+    margin-bottom: 40px;
 }
 
 .about-content-text p {
-    font-size: 1.05em; /* Slightly larger text for readability */
-    color: #444; /* Dark grey text color */
-    text-align: justify; /* Justifies the text for a clean look */
-    line-height: 1.65; /* Good line height for readability */
-    margin-bottom: 15px; /* Space between paragraphs */
+    font-size: 1.05em;
+    color: #444;
+    text-align: justify;
+    line-height: 1.65;
+    margin-bottom: 15px;
 }
 
 .about-content-text p:last-child {
-    margin-bottom: 0; /* No bottom margin on the last paragraph */
+    margin-bottom: 0;
 }
 
-/* --- Origin of NCG Styles (now integrated into the unified flow) --- */
+/* --- Origin of NCG Styles (Updated) --- */
 .origin-ncg-content {
     display: flex;
-    flex-direction: row; /* Side-by-side on desktop */
-    align-items: center; /* Vertically align items */
-    justify-content: center; /* Center the flex items when they don't take full width */
-    gap: 60px; /* Space between image and text */
-    margin-bottom: 40px; /* Space after this block */
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 40px; /* Reduced for tighter alignment */
+    margin-bottom: 40px;
+    flex-wrap: wrap;
 }
 
-/* Image styling within the NCG section */
 .origin-ncg-image {
-    flex-shrink: 0; /* Do not grow or shrink, take intrinsic size up to max-width */
-    max-width: 45%; /* Keep image size for balance */
+    flex: 0 0 auto;
+    max-width: 40%;
     height: auto;
+    object-fit: cover; /* Ensures clarity */
     display: block;
     border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow for the image itself */
-    transition: transform 0.25s ease-out, box-shadow 0.25s ease-out; /* RESTORED: Transition for hover effects */
-    margin: 0 auto; /* Ensure image is centered within its flexible space */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    margin: 0;
 }
 
-/* MODIFIED: Hover effects for origin-ncg-image for smoother animation */
-
-/*.origin-ncg-image:hover {
-    transform: scale(1.03) translateY(-5px); 
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25), 0 0 25px rgba(10, 145, 218, 0.6); 
-}*/
-
 .origin-ncg-text {
-    flex-grow: 1; /* Allows text to take up remaining space */
-    max-width: 55%; /* Increased text width for better readability */
+    flex: 1 1 55%;
     font-size: 1.05em;
     line-height: 1.7;
     color: #333;
     text-align: justify;
+    margin: 0;
+    padding: 0;
 }
 
 .origin-ncg-text p {
@@ -71,51 +62,48 @@
     margin-bottom: 0;
 }
 
-
-/* --- Our Objectives Styles (now integrated into the unified flow) --- */
+/* --- Our Objectives Styles --- */
 .objectives-content-text {
-    margin-top: 30px; /* Space below the section heading */
-    max-width: 900px; /* Constrain width for better readability of the list */
+    margin-top: 30px;
+    max-width: 900px;
     margin-left: auto;
     margin-right: auto;
 }
 
 .objectives-content-text ul {
-    list-style: none; /* Remove default bullet points */
+    list-style: none;
     padding: 0;
     margin: 0;
 }
 
 .objectives-content-text li {
-    background-color: #ffffff; /* White background for each list item */
+    background-color: #ffffff;
     padding: 18px 30px;
-    margin-bottom: 15px; /* Space between list items */
+    margin-bottom: 15px;
     border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Subtle shadow for each item */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     display: flex;
     align-items: flex-start;
     font-size: 1.1em;
     color: #333;
     line-height: 1.6;
-    transition: all 0.3s ease; /* RESTORED: Transition for hover effects */
-    border-left: 6px solid #0a91da; /* Blue accent border on the left */
+    transition: all 0.3s ease;
+    border-left: 6px solid #0a91da;
 }
 
 .objectives-content-text li:last-child {
-    margin-bottom: 0; /* No margin below the last item */
+    margin-bottom: 0;
 }
 
-/* RESTORED: Hover effects for objectives-content-text li */
-
-/* .objectives-content-text li:hover {
-    transform: translateX(8px); 
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); 
-    background-color: #e0f2f7; 
-    color: #022335; 
-} */ 
+.objectives-content-text li:hover {
+    transform: translateX(8px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    background-color: #e0f2f7;
+    color: #022335;
+}
 
 .objective-icon {
-    color: #0a91da; /* Blue color for the checkmark icon */
+    color: #0a91da;
     font-size: 1.4em;
     margin-right: 20px;
     flex-shrink: 0;
@@ -123,20 +111,19 @@
     text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
 }
 
-/* General Section Heading (for About RCG, Origin of NCG, Objectives) */
+/* Section Heading */
 .section-heading {
     font-family: 'Trirong', sans-serif;
     font-size: 2.5em;
     color: #022335;
     text-align: center;
-    margin-bottom: 40px; /* Consistent space below headings */
+    margin-bottom: 40px;
     position: relative;
     padding-bottom: 15px;
     text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
-    /* Transition for underline handled by ::after */
 }
 
-.section-heading::after { /* Underline effect for headings */
+.section-heading::after {
     content: '';
     position: absolute;
     left: 50%;
@@ -147,62 +134,48 @@
     background-color: #0a91da;
     border-radius: 5px;
     box-shadow: 0 0 15px rgba(10, 145, 218, 0.6);
-    transition: width 0.3s ease-out, box-shadow 0.3s ease-out; /* RESTORED: Transition for hover effects */
+    transition: width 0.3s ease-out, box-shadow 0.3s ease-out;
 }
 
-/* RESTORED: Hover effects for section-heading */
 .section-heading:hover::after {
     width: 150px;
     box-shadow: 0 0 25px rgba(10, 145, 218, 0.9);
 }
 
-
 /* Responsive CSS */
 @media (max-width: 991px) {
     .about-page-content-wrapper {
-        padding: 40px 15px; /* Adjust padding for tablets */
+        padding: 40px 15px;
     }
     .about-content-text p {
         font-size: 1em;
     }
     .section-heading {
-        font-size: 2em; /* Adjust heading size for tablets */
+        font-size: 2em;
         margin-bottom: 30px;
     }
     .origin-ncg-content {
-        flex-direction: column; /* Stack image and text vertically on tablets */
+        flex-direction: column;
         gap: 30px;
-        text-align: center; /* Center text when stacked */
+        text-align: center;
+        align-items: center;
     }
     .origin-ncg-image {
-        max-width: 80%; /* Image takes more width when stacked */
-        margin: 0 auto;
-    }
-    /* Disable hover effects for touch devices on images for better UX */
-    .origin-ncg-image:hover {
-        transform: none;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Revert to subtle shadow */
+        max-width: 80%;
+        height: auto;
     }
     .origin-ncg-text {
-        max-width: 100%; /* Text takes full width when stacked */
-        text-align: justify; /* Keep justified for paragraphs */
+        max-width: 100%;
+        text-align: justify;
     }
     .objectives-content-text li {
         font-size: 1em;
         padding: 15px 20px;
     }
-    /* Disable hover effects for touch devices on list items for better UX */
-    .objectives-content-text li:hover {
-        transform: none;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-        background-color: #ffffff;
-        color: #333;
-    }
     .objective-icon {
         font-size: 1.2em;
         margin-right: 15px;
     }
-    /* Disable hover effects for touch devices on section headings for better UX */
     .section-heading:hover::after {
         width: 120px;
         box-shadow: 0 0 15px rgba(10, 145, 218, 0.6);
@@ -211,20 +184,21 @@
 
 @media (max-width: 767px) {
     .about-page-content-wrapper {
-        padding: 30px 10px; /* Adjust padding for mobile */
+        padding: 30px 10px;
     }
     .about-content-text p {
         font-size: 0.95em;
     }
     .section-heading {
-        font-size: 1.8em; /* Adjust heading size for mobile */
+        font-size: 1.8em;
         margin-bottom: 25px;
     }
     .origin-ncg-content {
         gap: 20px;
     }
     .origin-ncg-image {
-        max-width: 95%; /* Image takes full width on mobile */
+        max-width: 95%;
+        height: auto;
     }
     .origin-ncg-text {
         font-size: 0.95em;

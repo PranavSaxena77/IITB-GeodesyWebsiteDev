@@ -1,176 +1,259 @@
 /* Facilities Page Specific Styles */
 
-/* Main section for the Facilities page, taking full breadth */
 .facility-section {
-    width: 100%;
-    padding: 60px 0; /* Vertical padding for the section */
-    background-color: #f8f9fa; /* Light background for the section */
-    box-shadow: 0 2px 15px rgba(0,0,0,0.05); /* Subtle shadow for depth */
-    margin-bottom: 0; /* Ensures no extra margin below the section */
+    padding: 60px 0;
+    background-color: #e9eff3; /* Consistent light blue-grey background for the entire section */
+    box-shadow: none; /* No shadow on the main section itself */
 }
 
-/* Container for the grid of facility items */
-.facility-grid {
-    display: grid; /* Use CSS Grid for robust responsive layout */
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Responsive columns, min width 300px */
-    gap: 30px; /* Space between grid items */
-    justify-content: center; /* Centers the entire grid horizontally if there's extra space */
-    align-items: stretch; /* Ensures all grid items stretch to the same height */
-    justify-items: center; /* Centers individual grid items within their cells */
-    padding-top: 20px; /* Space below the main heading */
+.main-facilities-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px; /* Space between main columns */
+    justify-content: center;
+    align-items: flex-start; /* Align columns to the top */
+    margin-top: 40px; /* Space below section heading */
 }
 
-/* Styles for an individual facility item (card-like appearance) */
+/* Styles for the main 3 columns (Computational, Survey, Drone) */
+.facility-main-column {
+    flex: 1 1 calc(33.33% - 20px); /* Three columns with gaps */
+    max-width: calc(33.33% - 20px);
+    min-width: 320px; /* Minimum width before stacking */
+    background-color: #ffffff; /* White background for main columns */
+    border-radius: 10px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); /* Subtle shadow for main columns */
+    overflow: hidden; /* Ensures content respects border-radius */
+    display: flex;
+    flex-direction: column; /* Stack header and content */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hover effect for main columns */
+}
+
+.facility-main-column:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2), 0 0 30px rgba(10, 145, 218, 0.5);
+}
+
+/* Content body for main columns */
+.column-content-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column; /* Stack facility items vertically */
+    gap: 20px; /* Space between facility items */
+    flex-grow: 1; /* Allows content area to fill remaining space */
+}
+
+/* Specific styling for the "Drone" column if empty */
+.drone-column .empty-column-note {
+    text-align: center;
+    color: #666;
+    padding: 30px;
+    font-style: italic;
+    font-size: 0.95em;
+}
+
+/* Survey Column specific styles for its sub-columns wrapper */
+.survey-sub-columns-wrapper {
+    display: flex;
+    flex-direction: column; /* Stack sub-columns vertically */
+    gap: 20px; /* Space between airborne and ground-based sub-columns */
+    flex-grow: 1; /* Allow sub-column wrapper to fill space */
+}
+
+/* Styles for the sub-columns (Airborne, Ground Based) */
+.survey-sub-column {
+    flex: 1 1 100%; /* Each sub-column takes full width of its parent */
+    background-color: #f8f9fa; /* Slightly off-white background for sub-columns */
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* Lighter shadow for sub-columns */
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hover effect for sub-columns */
+}
+
+.survey-sub-column:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Header for sub-columns */
+.sub-column-header {
+    background-color: #0a91da; /* Blue background for sub-column headers */
+    color: #fff;
+    padding: 12px 20px;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.1em;
+    font-weight: bold;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    margin-bottom: 15px; /* Space between header and content */
+}
+
+.sub-column-header h3 {
+    margin: 0;
+    font-size: 1em; /* Smaller font for sub-headers */
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+/* Content body for sub-columns */
+.sub-column-content-body {
+    padding: 0 15px 15px 15px; /* Padding around facility items within sub-columns */
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Space between facility items in sub-columns */
+    flex-grow: 1;
+}
+
+/* Existing facility-item styles - adapted for new layout */
 .facility-item {
-    background-color: #ffffff; /* White background for the card */
-    border-radius: 10px; /* Rounded corners for the card */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Soft shadow */
-    overflow: hidden; /* Ensures content respects border-radius and clips pseudo-elements */
-    display: flex; /* Makes it a flex container */
-    flex-direction: column; /* Stacks image and info vertically */
-    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out; /* Smooth hover effect */
-    height: 100%; /* Important for align-items: stretch to work */
-    /* Removed cursor: pointer; as it's no longer clickable for modal */
-    position: relative; /* Needed for ::before and ::after pseudo-elements */
+    background-color: #ffffff; /* White background for individual items */
+    border-radius: 8px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05); /* Very subtle shadow */
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    height: auto; /* Allow height to adjust */
+    border: 1px solid #eee; /* Light border */
 }
 
 .facility-item:hover {
-    transform: translateY(-8px); /* Lifts the card on hover */
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
+    transform: translateY(-3px);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Overlay effect on hover (::before) */
-.facility-item::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 220px; /* Match image height */
-    background-color: rgba(10, 145, 218, 0.2); /* Light blue overlay */
-    opacity: 0;
-    transition: opacity 0.3s ease-out;
-    z-index: 1; /* Above image, below shine */
-}
-
-.facility-item:hover::before {
-    opacity: 1;
-}
-
-/* Lightning/Shine effect on hover (::after) */
-.facility-item::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%; /* Start off-screen to the left */
-    width: 50%; /* Width of the shine */
-    height: 220px; /* Match image height */
-    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0) 100%);
-    transform: skewX(-20deg); /* Angle the shine */
-    transition: left 0.6s ease-out; /* Smooth movement across the image */
-    z-index: 2; /* Above the overlay */
-    pointer-events: none; /* Allows clicks to pass through to the image */
-}
-
-.facility-item:hover::after {
-    left: 100%; /* Move across to the right */
-}
-
-
-/* Styles for the image within each facility item */
 .facility-image {
     width: 100%;
-    height: 220px; /* Fixed height for consistent image size */
-    object-fit: cover; /* Ensures images cover the area without distortion */
-    display: block; /* Removes extra space below image */
-    border-bottom: 1px solid #eee; /* Subtle separator from title */
-    transition: transform 0.3s ease; /* Smooth zoom effect on image */
-    position: relative; /* Important for stacking context with pseudo-elements */
-    z-index: 0; /* Ensures image is below pseudo-elements */
+    height: 160px; /* Consistent image height */
+    object-fit: contain; /* Ensures image fits without cropping, adds padding if needed */
+    display: block;
+    border-bottom: 1px solid #f0f0f0;
+    background-color: #fdfdfd; /* Light background for images with transparent areas */
 }
 
-.facility-item:hover .facility-image {
-    transform: scale(1.05); /* Slightly zooms the image on card hover */
-}
-
-/* Styles for the information section (title and caption) below the image */
 .facility-info {
-    padding: 20px; /* Padding inside the info section */
-    text-align: center; /* Centers the title and caption text */
-    flex-grow: 1; /* Allows this section to grow and take available space */
-    display: flex; /* Makes it a flex container for centering content */
+    padding: 15px;
+    text-align: center;
+    flex-grow: 1; /* Allows info section to expand */
+    display: flex;
     flex-direction: column;
-    justify-content: center; /* Vertically centers the title if extra space */
-    align-items: center; /* Horizontally centers the title and caption */
-    position: relative; /* Keep info layer on top if needed */
-    z-index: 3; /* Ensure text is above any image effects */
+    justify-content: center; /* Center title and caption vertically */
+    align-items: center; /* Center title and caption horizontally */
 }
 
-/* Styles for the title of each facility item (already bold) */
 .facility-title {
-    font-family: 'Trirong', sans-serif;
-    font-size: 1.25em; /* Font size for the title */
-    color: #022335; /* Dark blue color */
-    margin-bottom: 5px; /* Added margin for space above caption */
-    line-height: 1.4; /* Improves readability for titles */
-    font-weight: bold; /* Ensures title is bold */
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.1em;
+    color: #022335;
+    margin-bottom: 8px;
+    font-weight: bold;
+    line-height: 1.3;
 }
 
-/* Styles for the image caption */
 .image-caption {
-    font-size: 0.9em; /* Adjusted font size for caption */
-    color: #555; /* Text color */
-    text-align: center; /* Center the caption text */
-    line-height: 1.4; /* Adjust line height for captions */
-    margin-bottom: 0; /* Remove default margin */
+    font-size: 0.85em;
+    color: #555;
+    line-height: 1.5;
+    margin-bottom: 0;
 }
 
-
-/* Responsive adjustments for smaller screens */
+/* Responsive adjustments */
 @media (max-width: 991px) { /* Tablets and smaller desktops */
-    .facility-section {
-        padding: 40px 0; /* Reduce vertical padding */
+    .main-facilities-container {
+        flex-direction: column; /* Stack main columns vertically */
+        align-items: center;
+        gap: 25px; /* Adjust gap */
     }
-    .facility-grid {
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Adjust min-width for tablets */
-        gap: 25px;
+    .facility-main-column {
+        flex: 1 1 100%; /* Take full width when stacked */
+        max-width: 100%;
+        min-width: unset; /* Remove min-width constraint */
+        transform: none; /* Disable hover transform on smaller screens */
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); /* Simpler shadow on touch devices */
+    }
+    .facility-main-column:hover {
+        transform: none;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .column-content-body {
+        padding: 15px; /* Adjust padding */
+        gap: 15px; /* Adjust gap */
+    }
+
+    .survey-sub-columns-wrapper {
+        flex-direction: column; /* Ensure sub-columns stack */
+        gap: 15px;
+    }
+    .survey-sub-column {
+        transform: none; /* Disable hover transform on smaller screens */
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Simpler shadow on touch devices */
+    }
+    .survey-sub-column:hover {
+        transform: none;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+    .sub-column-header {
+        padding: 10px 15px;
+        font-size: 1em;
+    }
+    .sub-column-content-body {
+        padding: 0 10px 10px 10px;
+        gap: 10px;
+    }
+    .facility-item {
+        transform: none; /* Disable hover transform on smaller screens */
+        box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05); /* Simpler shadow on touch devices */
+    }
+    .facility-item:hover {
+        transform: none;
+        box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
     }
     .facility-image {
-        height: 180px; /* Adjust image height for tablets */
+        height: 140px; /* Adjust image height */
+    }
+    .facility-info {
+        padding: 12px;
     }
     .facility-title {
-        font-size: 1.15em;
+        font-size: 1em;
     }
     .image-caption {
-        font-size: 1em; /* Further reduction for tablets */
-    }
-    /* Adjust pseudo-elements height for responsive images */
-    .facility-item::before,
-    .facility-item::after {
-        height: 180px; /* Match responsive image height */
+        font-size: 0.8em;
     }
 }
 
 @media (max-width: 767px) { /* Mobile specific adjustments */
     .facility-section {
-        padding: 30px 0; /* Further reduce vertical padding */
+        padding: 40px 0;
     }
-    .facility-grid {
-        grid-template-columns: 1fr; /* Single column layout for mobile */
+    .main-facilities-container {
         gap: 20px;
     }
+    .column-content-body {
+        padding: 10px;
+        gap: 10px;
+    }
+    .sub-column-header {
+        padding: 8px 10px;
+        font-size: 0.9em;
+    }
+    .sub-column-content-body {
+        padding: 0 8px 8px 8px;
+        gap: 8px;
+    }
     .facility-image {
-        height: 200px; /* Taller image for single column on mobile */
+        height: 120px; /* Further adjust image height for mobile */
+    }
+    .facility-info {
+        padding: 10px;
     }
     .facility-title {
-        font-size: 1.1em;
+        font-size: 0.9em;
     }
     .image-caption {
-        font-size: 0.8em; /* Smallest caption font on mobile */
-    }
-    /* Adjust pseudo-elements height for responsive images */
-    .facility-item::before,
-    .facility-item::after {
-        height: 200px; /* Match responsive image height */
+        font-size: 0.75em;
     }
 }
